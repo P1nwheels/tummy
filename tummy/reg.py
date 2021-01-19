@@ -2,6 +2,7 @@ import re
 
 
 import requests
+from bs4 import BeautifulSoup as bs
 
 
 def make_request(link):
@@ -16,7 +17,7 @@ def make_request(link):
 
 
 def search_request_text(response, expr):
-    text = response.text
+    text = bs(response.text, "html.parser").get_text()
     regexpr = re.compile(expr)
     results = regexpr.findall(text)
     for n, result in enumerate(results, start=1):

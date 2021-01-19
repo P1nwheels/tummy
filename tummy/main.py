@@ -52,16 +52,16 @@ def parse_args(args):
     
 
     # Deal with the commands.
-    if command == "weather":
-        w = tummy.weather.Weather(TUMMY_WEATHER)
-        exit(tummy.weather.parse_weather_args(subcommand, args, w))
-    elif command == "help":
+    if command == "help":
         exit(tummy_help())
     elif command == "notes":
         n = tummy.notes.Notepad(NOTES_PATH)
         exit(tummy.notes.parse_note_args(subcommand, args, n))
     elif command == "reg":
         exit(tummy.reg.parse_reg_args(subcommand, args))
+    elif command == "weather":
+        w = tummy.weather.Weather(TUMMY_WEATHER)
+        exit(tummy.weather.parse_weather_args(subcommand, args, w))
     else:
         print("\n    That's not a valid command.\n")
     
