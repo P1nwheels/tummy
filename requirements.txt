@@ -2,6 +2,5 @@ certifi==2020.12.5
 chardet==4.0.0
 idna==2.10
 requests==2.25.1
-# Editable install with no version control (tummy==0.0.0)
--e /home/pinwheel/Desktop/My_Projects/tummy
+-e git+https://github.com/P1nwheels/tummy.git@7fd8c045f80c005aaf3700cde7b637d0fb79df5e#egg=tummy
 urllib3==1.26.2

@@ -10,7 +10,7 @@ setup(
     name="tummy",
     author="Pinwheel",
     author_email="redacted",
-    version="0.2.0",
+    version="0.5.0",
     description="A collection of CLI tools for myself :)",
     url="https://github.com/P1nwheels/tummy",
     packages=find_packages(),

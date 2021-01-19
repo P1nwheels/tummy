@@ -4,6 +4,7 @@ import os
 
 import tummy.notes
 import tummy.weather
+import tummy.reg
 
 
 ARGC = len(sys.argv)
@@ -14,13 +15,17 @@ USAGE = """
 HELP = """
     commands:
 
-        weather OPTIONAL:[ config [LAT LON UNITS] ]
+        tummy weather OPTIONAL:[ config [LAT LON UNITS] ]
             Allowed units include: standard, imperial, metric.
             By default the arguments will be given these values resectively:
                 38.89511, -77.03637 "standard"
             Learn more: https://openweathermap.org/api/one-call-api#data
 
-        notes [ add, remove, clear, show ]
+        tummy notes [ add, remove, clear, show ]
+
+        tummy reg [ search [ REGEX ] ]
+
+        tummy help
 """
 MULTI_ARG_COMMANDS = ['notes']
 NOTES_PATH = ".tummy_notes.json"
@@ -55,6 +60,8 @@ def parse_args(args):
     elif command == "notes":
         n = tummy.notes.Notepad(NOTES_PATH)
         exit(tummy.notes.parse_note_args(subcommand, args, n))
+    elif command == "reg":
+        exit(tummy.reg.parse_reg_args(subcommand, args))
     else:
         print("\n    That's not a valid command.\n")
     

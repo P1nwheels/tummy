@@ -66,17 +66,20 @@ class Weather:
 
     
 def parse_weather_args(subcommand, args, weather):
-    if subcommand == "config" and args:
-        try:
-            float(args[0])
-            float(args[1])
-        except ValueError:
-            print("\n    Please provide a valid latitude/longitude.\n")
-        except IndexError:
-            weather.configure_json(*args)
+    if subcommand == "config":
+        if args:
+            try:
+                lat = float(args[0])
+                lon = float(args[1])
+                units = args[2]
+            except ValueError:
+                print("\n    Please provide a valid latitude/longitude.\n")
+            except IndexError:
+                print("\n    Please provide a latitude, longitude, and unit of measurement.\n")
+            else:
+                weather.configure_json(lat, lon, units)
         else:
-            weather.configure_json(*args)
-    elif subcommand == "config" and not args:
-        weather.configure_json()
+            print("\n    Configuring using default values.\n")
+            weather.configure_json()
     else:
         weather.get_weather()

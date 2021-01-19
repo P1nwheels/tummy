@@ -8,13 +8,14 @@ wanted to have all in one place. Now they are (:
 
 ### Commands:
 
-    tummy weather OPTIONAL: [ config [LAT LON UNITS] ]
+    tummy weather OPTIONAL:[ config [LAT LON UNITS] ]
         Allowed units include: standard, imperial, metric.
-        By default the arguments will be given
-        these values (if not provided) resectively:
+        By default the arguments will be given these values resectively:
             38.89511, -77.03637 "standard"
         Learn more: https://openweathermap.org/api/one-call-api#data
 
     tummy notes [ add, remove, clear, show ]
+
+    tummy reg [ search [ REGEX ] ]
 
     tummy help
