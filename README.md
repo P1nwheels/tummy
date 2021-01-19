@@ -16,6 +16,6 @@ wanted to have all in one place. Now they are (:
 
     tummy notes [ add, remove, clear, show ]
 
-    tummy reg [ search [ REGEX ] ]
+    tummy reg [ search [ link [ REGEX ] ] ]
 
     tummy help
