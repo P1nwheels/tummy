@@ -78,7 +78,6 @@ HELP = """
 
     tummy help
 """
-MULTI_ARG_COMMANDS = ['notes']
 NOTES_PATH = ".tummy_notes.json"
 TUMMY_WEATHER = ".tummy_weather.json"
 
