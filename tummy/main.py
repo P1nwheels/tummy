@@ -67,13 +67,16 @@ HELP = """
     tummy reg
         Subcommands:
 
-            1. search LINK "REGULAR EXPRESSION"
+            1. search LINK "REGULAR EXPRESSION" [Optional: INCLUDE_EXTRA]
 
             Example:
                 tummy reg search https://theprogrammershangout.com/rules/ "\d\. [ -/:-~]+"
 
             Searches the provided link's text for all the matches of the
-            regular expression that was provided
+            regular expression that was provided. If anything is provided
+            where "INCLUDE_EXTRA" is, then it will pad the regex with .{,25}
+            on both ends, if nothing is provided in that position then it will
+            find the exact regex specified.
 
 
     tummy help
@@ -98,8 +101,7 @@ def parse_args(args):
     elif ARGC >= 3:
         command = sys.argv[1].lower()
         subcommand = sys.argv[2].lower()
-        args = arguments if len((arguments := sys.argv[3:])) != 0 else None
-    
+        args = sys.argv[3:] or None
 
     # Deal with the commands.
     if command == "help":
