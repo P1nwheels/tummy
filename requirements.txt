@@ -2,7 +2,8 @@ beautifulsoup4==4.9.3
 certifi==2020.12.5
 chardet==4.0.0
 idna==2.10
+lxml==4.6.2
 requests==2.25.1
 soupsieve==2.1
--e git+https://github.com/P1nwheels/tummy.git@fe5600184601c11c7882b845a22d047c12589cf3#egg=tummy
+-e git+https://github.com/P1nwheels/tummy.git@4cf4ba7a43b83c05f8cacfed1b7ca4e72ef72efd#egg=tummy
 urllib3==1.26.2

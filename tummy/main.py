@@ -70,13 +70,12 @@ HELP = """
             1. search LINK "REGULAR EXPRESSION" [Optional: INCLUDE_EXTRA]
 
             Example:
-                tummy reg search https://theprogrammershangout.com/rules/ "\d\. [ -/:-~]+"
+                tummy reg search https://theprogrammershangout.com/rules/ "\d\. [ -/:-~]+" yes
 
             Searches the provided link's text for all the matches of the
-            regular expression that was provided. If anything is provided
-            where "INCLUDE_EXTRA" is, then it will pad the regex with .{,25}
-            on both ends, if nothing is provided in that position then it will
-            find the exact regex specified.
+            regular expression that was provided. If INCLUDE_EXTRA is "yes"
+            then it will pad the regex with ".{,50}" on both ends. Otherwise
+            it doesn't do any extra padding.
 
 
     tummy help
