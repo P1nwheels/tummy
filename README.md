@@ -8,14 +8,65 @@ wanted to have all in one place. Now they are (:
 
 ### Commands:
 
-    tummy weather OPTIONAL:[ config [LAT LON UNITS] ]
-        Allowed units include: standard, imperial, metric.
-        By default the arguments will be given these values resectively:
-            38.89511, -77.03637 "standard"
-        Learn more: https://openweathermap.org/api/one-call-api#data
+    tummy weather
+        Subcommands:
+            
+            1. config LATITUDE LONGITUDE UNITS
 
-    tummy notes [ add, remove, clear, show ]
+            Allowed units include: standard, imperial, metric.
+            
+            Example:
+                tummy weather config 38.89511, -77.03637 standard
+            
 
-    tummy reg [ search [ link [ REGEX ] ] ]
+    tummy notes
+        Subcommands:
+
+            1. add NOTE
+
+            Example:
+                tummy notes add "Adding a note" works with and without quotes.
+
+            Does exactly what the name suggests.
+
+            2. remove NUMBER
+
+            Example:
+                tummy notes remove 1
+
+            Does exactly what the name suggests.
+
+            3. clear
+
+            When you use this command you will be prompted to verify that you
+            are actually sure you'd like to clear your notes.
+
+            Example:
+                tummy notes clear
+
+            Does exactly what the name suggests.
+
+            4. show
+
+            This will be used by default if no subcommand is provided.
+
+            Does exactly what the name suggests.
+
+            Example:
+                tummy notes
+                tummy notes show
+
+
+    tummy reg
+        Subcommands:
+
+            1. search LINK "REGULAR EXPRESSION"
+
+            Example:
+                tummy reg search https://theprogrammershangout.com/rules/ "\d\. [ -/:-~]+"
+
+            Searches the provided link's text for all the matches of the
+            regular expression that was provided
+
 
     tummy help
