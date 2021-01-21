@@ -5,5 +5,4 @@ idna==2.10
 lxml==4.6.2
 requests==2.25.1
 soupsieve==2.1
--e git+https://github.com/P1nwheels/tummy.git@4cf4ba7a43b83c05f8cacfed1b7ca4e72ef72efd#egg=tummy
 urllib3==1.26.2

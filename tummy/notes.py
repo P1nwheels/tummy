@@ -59,26 +59,28 @@ class Notepad:
         self.write_changes()
 
 
-def parse_note_args(subcommand, args, notepad):
+def parse_note_args(subcommand, subcommand_args, notepad):
     if subcommand == "add":
-        if args:
-            notepad.add_note(" ".join(args))
+        if subcommand_args:
+            notepad.add_note(" ".join(subcommand_args))
         else:
-            print("    Please provide a note to add.")
+            print("\nPlease provide a note to add.\n")
     elif subcommand == "remove":
-        if args:
+        if subcommand_args:
             try:
-                to_remove = int(args[0])
+                to_remove = int(subcommand_args[0])
             except ValueError:
-                print("    Please provide a number to remove.")
+                print("\nPlease provide a number to remove.\n")
             else:
                 notepad.remove_note(to_remove)
         else:
-            print("    Please provide a note number to remove.")
+            print("\nPlease provide a note number to remove.\n")
     elif subcommand == "clear":
-        yorn = input("\n    Are you sure you want to clear your notes? [Y/N]\n\t-> ").lower()
+        yorn = input("\nAre you sure you want to clear your notes? [Y/N]\n  -> ").lower()
         print()
         if yorn == "y":
             notepad.clear_notes()
-    elif subcommand == "show" or args == None:
+    elif subcommand == "show":
         notepad.show_notes()
+    else:
+        print("\nPlease provide a valid command.\n")

@@ -55,8 +55,6 @@ HELP = """
 
             4. show
 
-            This will be used by default if no subcommand is provided.
-
             Does exactly what the name suggests.
 
             Example:
@@ -96,27 +94,27 @@ def parse_args(args):
     elif ARGC == 2:
         command = sys.argv[1].lower()
         subcommand = None
-        args = None
+        subcommand_args = []
     elif ARGC >= 3:
         command = sys.argv[1].lower()
         subcommand = sys.argv[2].lower()
-        args = sys.argv[3:] or None
+        subcommand_args = sys.argv[3:]
 
     # Deal with the commands.
     if command == "help":
         exit(tummy_help())
     elif command == "notes":
         n = tummy.notes.Notepad(NOTES_PATH)
-        exit(tummy.notes.parse_note_args(subcommand, args, n))
+        exit(tummy.notes.parse_note_args(subcommand, subcommand_args, n))
     elif command == "reg":
-        exit(tummy.reg.parse_reg_args(subcommand, args))
+        exit(tummy.reg.parse_reg_args(subcommand, subcommand_args))
     elif command == "weather":
         w = tummy.weather.Weather(TUMMY_WEATHER)
-        exit(tummy.weather.parse_weather_args(subcommand, args, w))
+        exit(tummy.weather.parse_weather_args(subcommand, subcommand_args, w))
     else:
         print("\n    That's not a valid command.\n")
     
 
 def main():
-    os.chdir(f"/home/{os.getenv('USER')}")  
+    os.chdir(f"/home/{os.getenv('USER')}")
     parse_args(sys.argv)

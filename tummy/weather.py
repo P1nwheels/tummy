@@ -56,30 +56,31 @@ class Weather:
         """)
 
 
-    def configure_json(self, lat=None, lon=None, units=None):
+    def configure_json(self, lat, lon, units):
         with open(self.file, "w") as f:
             temp_obj = self.default_obj
-            temp_obj['lat'] = lat or self.default_obj['lat']
-            temp_obj['lon'] = lon or self.default_obj['lon']
-            temp_obj['units'] = units or self.default_obj['units']
+            temp_obj['lat'] = lat
+            temp_obj['lon'] = lon
+            temp_obj['units'] = units
             json.dump(temp_obj, f, indent=4)
 
-    
-def parse_weather_args(subcommand, args, weather):
-    if subcommand == "config":
-        if args:
-            try:
-                lat = float(args[0])
-                lon = float(args[1])
-                units = args[2]
-            except ValueError:
-                print("\n    Please provide a valid latitude/longitude.\n")
-            except IndexError:
-                print("\n    Please provide a latitude, longitude, and unit of measurement.\n")
-            else:
-                weather.configure_json(lat, lon, units)
-        else:
-            print("\n    Configuring using default values.\n")
-            weather.configure_json()
+
+def proper_subc_args(args):
+    try:
+        lat = float(args[0])
+        lon = float(args[1])
+        units = "metric" if args[2] not in {"imperial", "metric", "standard"} else args[2]
+    except ValueError:
+        exit(print("\nPlease provide a number for latitude and longitude\n"))
     else:
-        weather.get_weather()
+        return [lat, lon, units]
+
+    
+def parse_weather_args(subcommand, subcommand_args, weather_instance):
+    if subcommand == "config":
+        if len(subcommand_args) == 3:
+            weather_instance.get_weather(*proper_subc_args(subcommand_args))
+        else:
+            print("\nPlease provide the correct number of arguments.\n")
+    else:
+        weather_instance.get_weather()

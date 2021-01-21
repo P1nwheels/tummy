@@ -48,19 +48,16 @@ wanted to have all in one place. Now they are (:
 
             4. show
 
-            This will be used by default if no subcommand is provided.
-
             Does exactly what the name suggests.
 
             Example:
-                tummy notes
                 tummy notes show
 
 
     tummy reg
         Subcommands:
 
-            1. search LINK "REGULAR EXPRESSION" [Optional: INCLUDE_EXTRA]
+            1. search LINK "REGULAR EXPRESSION" INCLUDE_EXTRA
 
             Example:
                 tummy reg search https://theprogrammershangout.com/rules/ "\d\. [ -/:-~]+" yes
